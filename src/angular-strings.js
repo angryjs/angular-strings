@@ -20,8 +20,23 @@
         return string.charAt(0).toUpperCase() + string.slice(1);
       };
 
+      Strings.prototype.dateFromString = function (string) {
+        if(typeof string === 'string') {
+          var t = string.split(/[- :]/);
+          return new Date(t[0], t[1] - 1, t[2], t[3] || 0, t[4] || 0, t[5] || 0);
+        }
+
+        return null;
+      };
+
       return new Strings();
     })
+
+    .filter('dateFromString', ['Strings', function (Strings) {
+      return function (string) {
+        return Strings.dateFromString(string);
+      }
+    }])
 
     .filter('truncate', function () {
       return function (text, length, end) {
