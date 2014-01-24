@@ -29,12 +29,22 @@
         return null;
       };
 
+      Strings.prototype.htmlToPlaintext = function (text) {
+        return String(text).replace(/<(?:.|\n)*?>/gm, '');
+      };
+
       return new Strings();
     })
 
     .filter('dateFromString', ['Strings', function (Strings) {
       return function (string) {
         return Strings.dateFromString(string);
+      }
+    }])
+
+    .filter('htmlToPlainText', ['Strings', function (Strings) {
+      return function (string) {
+        return Strings.htmlToPlaintext(string);
       }
     }])
 
