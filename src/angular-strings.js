@@ -48,6 +48,12 @@
       }
     }])
 
+    .filter('webalize', ['Strings', function (Strings) {
+      return function (string) {
+        return Strings.webalize(string);
+      }
+    }])
+
     .filter('truncate', function () {
       return function (text, length, end) {
         if (isNaN(length)) {
