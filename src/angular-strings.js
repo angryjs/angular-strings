@@ -54,6 +54,16 @@
       }
     }])
 
+    .filter('decodeEntities', function () {
+      return function(text) {
+        var str, temp= document.createElement('p');
+        temp.innerHTML= text;
+        str= temp.textContent || temp.innerText;
+        temp=null;
+        return str;
+      }
+    })
+
     .filter('truncate', function () {
       return function (text, length, end) {
         if (isNaN(length)) {
