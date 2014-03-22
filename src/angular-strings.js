@@ -29,7 +29,7 @@
         return null;
       };
 
-      Strings.prototype.htmlToPlaintext = function (text) {
+      Strings.prototype.htmlToPlainText = function (text) {
         return String(text).replace(/<(?:.|\n)*?>/gm, '');
       };
 
@@ -44,7 +44,7 @@
 
     .filter('htmlToPlainText', ['Strings', function (Strings) {
       return function (string) {
-        return Strings.htmlToPlaintext(string);
+        return Strings.htmlToPlainText(string);
       }
     }])
 
